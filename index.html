@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentMint — Free mint for Agent ID holders</title>
+<style>
+  :root { color-scheme: dark; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #0B0E11; color: #EAECEF; margin: 0; padding: 0; }
+  main { max-width: 640px; margin: 0 auto; padding: 32px 20px 64px; }
+  h1 { color: #F0B90B; font-size: 2rem; margin: 0 0 8px; }
+  p.lead { color: #B7BDC6; line-height: 1.6; }
+  .card { background: #181A20; border: 1px solid #2B3139; border-radius: 12px; padding: 20px; margin-top: 20px; }
+  .row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #2B3139; }
+  .row:last-child { border-bottom: none; }
+  .label { color: #848E9C; }
+  .value { font-family: monospace; }
+  .ok { color: #0ECB81; } .bad { color: #F6465D; } .muted { color: #848E9C; }
+  button { background: #F0B90B; color: #0B0E11; border: none; border-radius: 8px; padding: 12px 24px; font-size: 1rem; font-weight: 700; cursor: pointer; width: 100%; margin-top: 16px; }
+  button:disabled { background: #2B3139; color: #848E9C; cursor: not-allowed; }
+  button.secondary { background: transparent; color: #F0B90B; border: 1px solid #F0B90B; }
+  #status { margin-top: 16px; line-height: 1.6; word-break: break-all; }
+  a { color: #F0B90B; }
+  code { background: #2B3139; padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
+  footer { margin-top: 32px; color: #848E9C; font-size: 0.85rem; line-height: 1.6; }
+</style>
+</head>
+<body>
+<main>
+  <h1>AgentMint</h1>
+  <p class="lead">A free NFT mint for Agent ID holders on BNB Chain. One mint per
+  Agent ID holder, no payment, no fees, no allowlist. The contract never
+  holds funds — minting is free, you only pay network gas.</p>
+
+  <div class="card">
+    <div class="row"><span class="label">Network</span><span class="value" id="network">Not connected</span></div>
+    <div class="row"><span class="label">Your wallet</span><span class="value" id="account">—</span></div>
+    <div class="row"><span class="label">Agent ID</span><span class="value" id="agentId">—</span></div>
+    <div class="row"><span class="label">Already minted</span><span class="value" id="minted">—</span></div>
+    <div class="row"><span class="label">Minted / cap</span><span class="value" id="supply">—</span></div>
+    <div class="row"><span class="label">Contract</span><span class="value" id="contract">—</span></div>
+    <button id="connectBtn" class="secondary">Connect wallet</button>
+    <button id="mintBtn" disabled>Mint my free AgentMint</button>
+    <div id="status"></div>
+  </div>
+
+  <footer>
+    <p>How it works: the contract checks the official Agent ID registry
+    (<code>0x60B9262456dE011F7d15a54CdD8c48bAaa8B022F</code>) — if your
+    wallet holds an Agent ID, you can mint exactly one AgentMint NFT for
+    free. Metadata is generated fully on-chain, so the collection needs no
+    hosting.</p>
+    <p>Open source: contract <code>AgentMint.sol</code> (MIT), verified on
+    BscScan after deployment. Built for the Binance Agent ID Hackathon.</p>
+  </footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.13.4/dist/ethers.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
